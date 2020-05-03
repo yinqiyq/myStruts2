@@ -6,6 +6,8 @@
 <br>
 ${product.name}
 <br>
+${name}
+<br>
 ${product.age}
 
 </body>
