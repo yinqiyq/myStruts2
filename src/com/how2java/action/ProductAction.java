@@ -3,15 +3,44 @@ package com.how2java.action;
 import com.how2java.bean.Category;
 import com.how2java.bean.Product;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class ProductAction {
+public class ProductAction extends ActionSupport{
+
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void validate(){
+		if ( product.getName().length() == 0 ){
+			addFieldError( "product.name", "name can't be empty" );
+		}
+	}
+
+	private Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	private Product product;
 
 	private List<Product> products;
@@ -42,6 +71,12 @@ public class ProductAction {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+
+	public String addPage(){
+		name = "default name";
+		return "addPage";
 	}
 
 
